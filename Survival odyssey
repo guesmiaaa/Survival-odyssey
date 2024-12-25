@@ -1,0 +1,860 @@
+if game.SoundService:GetAttribute("Injected") then
+	print("already injected!")
+	task.wait(9e9)
+end
+game.SoundService:SetAttribute("Injected", true)
+
+--local sound = Instance.new("Sound", game.SoundService)
+--sound.SoundId = "rbxassetid://7854285068"
+--sound:Play()
+
+local function PlayAnimation()
+	-- Gui to Lua
+	-- Version: 3.2
+
+	-- Instances:
+
+	local TweenService = game:GetService('TweenService')
+
+	local ScreenGui = Instance.new("ScreenGui")
+	local title = Instance.new("TextLabel")
+	local TextLabel = Instance.new("TextLabel")
+	local right = Instance.new("ImageLabel")
+	local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+	local UISizeConstraint = Instance.new("UISizeConstraint")
+	local left = Instance.new("ImageLabel")
+	local UIAspectRatioConstraint_2 = Instance.new("UIAspectRatioConstraint")
+	local UISizeConstraint_2 = Instance.new("UISizeConstraint")
+
+	--Properties:
+
+	ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	ScreenGui.DisplayOrder = 999999999
+	ScreenGui.ResetOnSpawn = false
+	ScreenGui.Enabled = false
+
+	title.Name = "title"
+	title.Parent = ScreenGui
+	title.AnchorPoint = Vector2.new(0.5, 0.5)
+	title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title.BackgroundTransparency = 1.000
+	title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	title.BorderSizePixel = 0
+	title.Position = UDim2.new(0.499811828, 0, 0.5, 0)
+	title.Size = UDim2.new(0.549999833, 0, 0.100000001, 0)
+	title.ZIndex = 2
+	title.Font = Enum.Font.Unknown
+	title.Text = "Chillflix Hub"
+	title.TextColor3 = Color3.fromRGB(0, 0, 0)
+	title.TextScaled = true
+	title.TextSize = 14.000
+	title.TextStrokeTransparency = 0.000
+	title.TextWrapped = true
+
+	TextLabel.Parent = title
+	TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.BackgroundTransparency = 1.000
+	TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel.BorderSizePixel = 0
+	TextLabel.Position = UDim2.new(0.5, 0, 0.469999999, 0)
+	TextLabel.Size = UDim2.new(1, 0, 1, 0)
+	TextLabel.Font = Enum.Font.Unknown
+	TextLabel.Text = "Chillflix Hub"
+	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.TextScaled = true
+	TextLabel.TextSize = 14.000
+	TextLabel.TextStrokeTransparency = 0.000
+	TextLabel.TextWrapped = true
+
+	right.Name = "right"
+	right.Parent = ScreenGui
+	right.AnchorPoint = Vector2.new(0.5, 0.5)
+	right.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	right.BackgroundTransparency = 1.000
+	right.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	right.BorderSizePixel = 0
+	right.Position = UDim2.new(0.860027373, 0, 0.496604413, 0)
+	right.Size = UDim2.new(0.200000003, 0, 0.200000003, 0)
+	--right.Image = "http://www.roblox.com/asset/?id=115758052502955"
+
+	UIAspectRatioConstraint.Parent = right
+
+	UISizeConstraint.Parent = right
+
+	left.Name = "left"
+	left.Parent = ScreenGui
+	left.AnchorPoint = Vector2.new(0.5, 0.5)
+	left.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	left.BackgroundTransparency = 1.000
+	left.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	left.BorderSizePixel = 0
+	left.Position = UDim2.new(0.139288127, 0, 0.5, 0)
+	left.Size = UDim2.new(0.200000003, 0, 0.200000003, 0)
+	--left.Image = "http://www.roblox.com/asset/?id=115758052502955"
+
+	local evil = Instance.new("ImageLabel")
+	local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+	local UISizeConstraint = Instance.new("UISizeConstraint")
+
+	--Properties:
+
+	evil.Name = "evil"
+	evil.Parent = ScreenGui
+	evil.AnchorPoint = Vector2.new(0.5, 0.5)
+	evil.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	evil.BackgroundTransparency = 1.000
+	evil.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	evil.BorderSizePixel = 0
+	evil.Position = UDim2.new(0.5, 0, 0.5, 0)
+	evil.Size = UDim2.new(0.5, 0, 0.5, 0)
+	evil.ZIndex = 999999999
+	evil.Image = "http://www.roblox.com/asset/?id=18993635273"
+	evil.ImageTransparency = 1
+
+	UIAspectRatioConstraint.Parent = evil
+
+	UISizeConstraint.Parent = evil
+
+	UIAspectRatioConstraint_2.Parent = left
+
+	UISizeConstraint_2.Parent = left
+
+	local Origin_left = left.Position
+	local Origin_right = right.Position
+	local Origin_title = title.Position
+
+	left.Position -= UDim2.fromScale(.3,0)
+	right.Position += UDim2.fromScale(.3,0)
+	title.Position = UDim2.fromScale(.5,-.5)
+
+	ScreenGui.Enabled = true
+
+	local function RotateFull360(gui:TextButton, Multiplier)
+		local Divide = 8
+		for i = 1, 360/Divide do
+			gui.Rotation = (i*Divide)*Multiplier
+			task.wait()
+		end
+	end
+
+	TweenService:Create(left, TweenInfo.new(1, Enum.EasingStyle.Sine), {
+		Position = Origin_left,
+	}):Play()
+	task.spawn(RotateFull360, left, 1)
+
+	TweenService:Create(right, TweenInfo.new(1, Enum.EasingStyle.Sine), {
+		Position = Origin_right,
+	}):Play()
+	task.spawn(RotateFull360, right, -1)
+
+	TweenService:Create(title, TweenInfo.new(1, Enum.EasingStyle.Back), {
+		Position = Origin_title,
+	}):Play()
+
+	task.wait(1.2)
+
+	TweenService:Create(left, TweenInfo.new(.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
+		Position = Origin_left-UDim2.fromScale(.5,1)
+	}):Play()
+	task.spawn(RotateFull360, left, 1)
+
+	TweenService:Create(right, TweenInfo.new(.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
+		Position = Origin_right-UDim2.fromScale(-.5,1)
+	}):Play()
+	task.spawn(RotateFull360, right, -1)
+
+	TweenService:Create(title, TweenInfo.new(.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
+		Position = Origin_title-UDim2.fromScale(0,1)
+	}):Play()
+
+	TweenService:Create(evil, TweenInfo.new(.3, Enum.EasingStyle.Sine, Enum.EasingDirection.Out, 0, true, .5), {
+		ImageTransparency = .8
+	}):Play()
+
+end
+
+
+PlayAnimation()
+
+
+
+local RunService = game:GetService('RunService')
+
+local PickupEvent = game.ReplicatedStorage.Events.Pickup
+
+local connections  ={
+	
+}
+
+local player = game.Players.LocalPlayer
+local function character()
+	return player.Character
+end
+local function humanoid()
+	return character():WaitForChild("Humanoid")
+end
+local function torso()
+	return character().LowerTorso
+end
+
+--//variables
+
+local TeleportPlayersCurrentPlayer
+local TeleportObjectsCurrentFolder
+local LoopTeleportToPlayer = false
+local LoopTeleportToObject = false
+local AutofarmSafemode = false
+local Autopickup = false
+local LastTime
+local LastHealth = humanoid().Health
+local OriginalCFrame = character():GetPivot()
+local CurrentLocationName
+
+local IsWalkSpeed = false
+local IsInfiniteJump = false
+local IsPlayerESP = false
+local IsFlying = false
+
+local speed=10
+local keys={a=false,d=false,w=false,s=false}
+local e1
+local e2
+
+local FoundObjectToTeleportTo
+
+local CYCLE_DURATION = .8
+
+local i = 0
+
+local InfiniteJumpDebounce = false
+
+local WalkSpeedAmount = 50
+local InfiniteJumpAmount = 1
+local InfiniteJumpHeight = 5
+
+local Movements = {
+	["Forward"] = false,
+	["Backward"] = false,
+	["Left"] = false,
+	["Right"] = false,
+}
+
+local Locations = {
+	{ Name = "Golden Banto Island", Location = CFrame.new(-49.3390388, 344.571991, 217.455353, 0.721913755, 5.53914035e-08, 0.691983104, -8.13982766e-08, 1, 4.87170304e-09, -0.691983104, -5.98431811e-08, 0.721913755) },
+	{ Name = "Crystal Bantae Island", Location = CFrame.new(-542.474731, 363.212646, 211.509293, 0.943875313, -6.61198918e-09, 0.33030197, 4.31136371e-09, 1, 7.69780417e-09, -0.33030197, -5.84171556e-09, 0.943875313) },
+	{ Name = "Waterfall Island", Location = CFrame.new(226.404465, 160.962662, -337.170349, -0.975488186, -3.02504866e-08, 0.220052883, -3.99012841e-08, 1, -3.94120612e-08, -0.220052883, -4.72263828e-08, -0.975488186) },
+	{ Name = "Snow Island", Location = CFrame.new(500.970764, 292.700256, -1226.8103, 0.949896574, -7.83821363e-09, -0.312564403, 1.67495173e-08, 1, 2.58253881e-08, 0.312564403, -2.97667508e-08, 0.949896574) },
+	{ Name = "Volcano", Location = CFrame.new(-571.94928, 56.8316689, 774.276917, 0.28756541, -3.67799586e-08, 0.95776099, -5.81785109e-09, 1, 4.01488194e-08, -0.95776099, -1.71175216e-08, 0.28756541) },
+	{ Name = "Forest", Location = CFrame.new(890.709656, 154.032883, 1171.96216, 0.816265941, 4.1977863e-08, 0.577676356, -4.36448531e-08, 1, -1.09958771e-08, -0.577676356, -1.62370348e-08, 0.816265941) },
+	{ Name = "Desert", Location = CFrame.new(-528.789917, 88.7836914, -1160.89734, -0.495665789, 1.87765306e-08, -0.868513405, 5.73446846e-09, 1, 1.83464657e-08, 0.868513405, 4.11325285e-09, -0.495665789) },
+	{ Name = "Snow", Location = CFrame.new(777.322083, 0.962651432, -1038.26318, -0.928575873, 4.22404156e-08, -0.371142834, 3.97366833e-08, 1, 1.43931e-08, 0.371142834, -1.38290046e-09, -0.928575873) },
+}
+
+local LocationNames = {
+	
+}
+
+for _,v in ipairs(Locations) do
+	table.insert(LocationNames, v.Name)
+end
+
+local LocalBlacklistParams = RaycastParams.new()
+LocalBlacklistParams.FilterType = Enum.RaycastFilterType.Exclude
+LocalBlacklistParams.IgnoreWater = true
+LocalBlacklistParams.FilterDescendantsInstances = {character()}
+
+
+--//lib
+
+local Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/7yhx/kwargs_Ui_Library/main/source.lua"))()
+
+local UI = Lib:Create{
+	Theme = "Dark", -- or any other theme
+	Size = UDim2.new(0, 555, 0, 400) -- default
+}
+
+local function TurnInstanceArrayToStringArray(array)
+	for i,v in ipairs(array) do
+		array[i] = v.Name
+	end
+	return array
+end
+
+local function GetLocationCFrameFromName(Name)
+	for _,v in ipairs(Locations) do
+		if v.Name == Name then
+			return v.Location
+		end
+	end
+	return false
+end
+
+local function IsObjectDestroyed(Object:Model)
+	return not Object.Parent
+end
+
+local function TeleportToPlayer(target_player)
+	if target_player then
+		local target_cframe = target_player.Character:GetPivot()
+		local cframe_infront = target_cframe*CFrame.new(target_cframe.LookVector*2)
+		character():PivotTo(CFrame.lookAt(cframe_infront.Position, target_cframe.Position))
+	end
+end
+
+local function SpinAroundModel(target_model, dt, DISTANCE)
+	i = (i + dt/CYCLE_DURATION) % 1
+	local alpha = 2 * math.pi * i
+
+	local target_CFrame = CFrame.Angles(0, alpha, 0)
+		* CFrame.new(0, 0, DISTANCE)
+		+ target_model:GetBoundingBox().Position
+
+	character():PivotTo(target_CFrame)
+end
+
+local function ChooseRandomObject()
+	local array  ={
+		
+	}
+	for _,v in ipairs(TeleportObjectsCurrentFolder:GetChildren()) do
+		if not IsObjectDestroyed(v) then --if v.Health.Value > 6 then
+			table.insert(array, v)
+		end
+	end
+	if #array > 0 then
+		return array[math.random(1,#array)]
+	else
+		return false
+	end
+end
+
+local function Raycast(Origin, Destination, Distance, Params)
+	local Direction = (Destination-Origin).Unit*Distance
+	local Raycast = workspace:Raycast(Origin, Direction, Params)
+	if Raycast then
+		local Hit, Normal, Position = Raycast.Instance, Raycast.Normal, Raycast.Position
+		return Hit, Normal, Position
+	end
+end
+
+local function ReturnAllCharactersExcept(Exceptions)
+	local Returned = {
+
+	}
+	for _, Player in ipairs(game.Players:GetPlayers()) do
+		local Character = Player.Character
+		if Character then
+			if not table.find(Exceptions, Character) then
+				table.insert(Returned, Character)
+			end
+		end
+	end
+	return Returned
+end
+
+local function TurnOffPlayerESP()
+	for _, CurrentPlayer in ipairs(game.Players:GetPlayers()) do
+		local PlayerCharacter = CurrentPlayer.Character
+		if PlayerCharacter then
+			local CurrentEspHighlight = PlayerCharacter:FindFirstChild("ESPHighlight")
+			if CurrentEspHighlight then
+				CurrentEspHighlight:Destroy()
+			end
+		end
+	end
+end
+
+local function StartFlying()
+	local pos = Instance.new("BodyPosition",torso())
+	local gyro = Instance.new("BodyGyro",torso())
+	pos.Name="EPIXPOS"
+	pos.maxForce = Vector3.new(math.huge, math.huge, math.huge)
+	pos.position = torso().Position
+	gyro.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+	gyro.cframe = torso().CFrame
+	repeat
+		task.wait()
+		humanoid().PlatformStand=true
+		local new=gyro.cframe - gyro.cframe.p + pos.position
+		--print(Movements.Forward)
+		if not Movements.Forward and not Movements.Backward and not Movements.Right and not Movements.Left then
+			speed=5
+		end
+		if Movements.Forward then
+			new = new + workspace.CurrentCamera.CoordinateFrame.lookVector * speed
+			speed=speed+0
+		end
+		if Movements.Backward then
+			new = new - workspace.CurrentCamera.CoordinateFrame.lookVector * speed
+			speed=speed+0
+		end
+		if Movements.Right then
+			new = new * CFrame.new(speed,0,0)
+			speed=speed+0
+		end
+		if Movements.Left then
+			new = new * CFrame.new(-speed,0,0)
+			speed=speed+0
+		end
+		if speed>10 then
+			speed=5
+		end
+		pos.position=new.p
+		if keys.w then
+			gyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(-math.rad(speed*0),0,0)
+		elseif keys.s then
+			gyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(math.rad(speed*0),0,0)
+		else
+			gyro.cframe = workspace.CurrentCamera.CoordinateFrame
+		end
+	until IsFlying == false
+	if gyro then gyro:Destroy() end
+	if pos then pos:Destroy() end
+	IsFlying=false
+	humanoid().PlatformStand=false
+	speed=10
+end
+
+local function PickupItem(item)
+	PickupEvent:FireServer(item)
+end
+
+local Main = UI:Tab{
+	Name = "Main"
+}
+
+local Teleport = UI:Tab{
+	Name = "Teleport"
+}
+
+local Autofarm = UI:Tab{
+	Name = "Autofarm"
+}
+
+--//dividers
+
+local MainDivider = Main:Divider{
+	Name = "Main"
+}
+
+local QuitDivider = Main:Divider{
+	Name = "Quit"
+}
+
+local PlayersTeleport = Teleport:Divider{
+	Name = "Players"
+}
+
+local LocationsTeleport = Teleport:Divider{
+	Name = "Locations"
+}
+
+local ObjectTeleport = Autofarm:Divider{
+	Name = "Objects"
+}
+
+local Movement = Main:Divider{
+	Name = "Movement"
+}
+
+local ESP = Main:Divider{
+	Name = "ESP"
+}
+
+
+--//buttons n shit
+
+--[[local AutopickupButton = MainDivider:Toggle{
+	Name = "Auto Pickup",
+	Description = "Instantly pick up items near you",
+	Callback = function(State)
+		Autopickup = State
+	end
+}]]
+
+local PlayerEspButton = ESP:Toggle{
+	Name = "Player ESP",
+	Description = "See everyone on the map.",
+	Callback = function(State)
+		IsPlayerESP = State
+	end
+}
+
+local CFrameWalkButton = Movement:Toggle{
+	Name = "CFrame Walk",
+	Description = "Very fast movement.",
+	Callback = function(State)
+		IsWalkSpeed = State
+	end
+}
+
+local InfJumpButton = Movement:Toggle{
+	Name = "Infinite Jump",
+	Description = "Basically just fly.",
+	Callback = function(State)
+		IsInfiniteJump = State
+	end
+}
+
+local FlyButton = Movement:Toggle{
+	Name = "Fly",
+	Description = "Fly.",
+	Callback = function(State)
+		IsFlying = State
+		if IsFlying then
+			StartFlying()
+		end
+	end
+}
+
+Movement:Box{
+	Name = "CFrame Walk Speed",
+	ClearText = true, -- whether the textbox clears on focus or not
+	Callback = function(Value)
+		if tonumber(Value) then
+			WalkSpeedAmount = tonumber(Value)
+		end
+	end
+}
+
+local TeleportPlayersButton = PlayersTeleport:Button{
+	Name = "Teleport",
+	Callback = function()
+		TeleportToPlayer(TeleportPlayersCurrentPlayer)
+	end
+}
+
+local TeleportPlayersDropdown = PlayersTeleport:SearchDropdown{
+	Name = "Players",
+	Options = TurnInstanceArrayToStringArray(game.Players:GetPlayers()),
+	ClearText = false, -- default
+	Callback = function(Value)
+		TeleportPlayersCurrentPlayer = game.Players:FindFirstChild(Value)
+	end
+}
+
+local TeleportLocationsDropdown = LocationsTeleport:SearchDropdown{
+	Name = "Locations",
+	Options = LocationNames,
+	ClearText = false, -- default
+	Callback = function(Value)
+		CurrentLocationName = Value
+	end
+}
+
+local TeleportLocationsButton = LocationsTeleport:Button{
+	Name = "Teleport",
+	Callback = function()
+		if CurrentLocationName then
+			character():PivotTo(GetLocationCFrameFromName(CurrentLocationName))
+		end
+	end
+}
+
+local TeleportLocationsButton = LocationsTeleport:Button{
+	Name = "Teleport to Void",
+	Callback = function()
+        local TeleportService = game:GetService("TeleportService")
+        local player = game.Players.LocalPlayer
+        
+        local targetGameId = 18629058177
+        
+        local function teleportToGame()
+            TeleportService:Teleport(targetGameId, player)
+        end
+        
+        teleportToGame()
+	end
+}
+
+local TeleportLocationsButton = LocationsTeleport:Button{
+	Name = "Teleport to UnderWorld",
+	Callback = function()
+        local TeleportService = game:GetService("TeleportService")
+        local player = game.Players.LocalPlayer
+        
+        local targetGameId = 92039548740735
+        
+        local function teleportToGame()
+            TeleportService:Teleport(targetGameId, player)
+        end
+        
+        teleportToGame()
+	end
+}
+
+local TeleportLocationsButton = LocationsTeleport:Button{
+	Name = "Teleport to Main World",
+	Callback = function()
+        local TeleportService = game:GetService("TeleportService")
+            local player = game.Players.LocalPlayer
+            
+            local targetGameId = 18629053284
+            
+            local function teleportToGame()
+                TeleportService:Teleport(targetGameId, player)
+            end
+            
+            teleportToGame()
+	end
+}
+
+
+local ItemAura = MainDivider:Toggle{
+	Name = "Item Aura",
+	Description = "Picks up all possible items near you.",
+	Callback = function(State)
+		Autopickup = State
+	end
+}
+
+local LoopTeleportPlayersDropdown = PlayersTeleport:Toggle{
+	Name = "Loop",
+	Description = "Loop teleport to given player.",
+	Callback = function(State)
+		LoopTeleportToPlayer = State
+	end
+}
+
+local LoopTeleportObjectsToggle = ObjectTeleport:Toggle{
+	Name = "Toggle Autofarm",
+	Description = "Autofarm object.",
+	Callback = function(State)
+		if State then
+			OriginalCFrame = character():GetPivot()
+		else
+			character():PivotTo(OriginalCFrame)
+		end
+		LoopTeleportToObject = State
+		if AutofarmSafemode then
+			LastHealth = humanoid().Health
+		end
+	end
+}
+
+local SafemodeToggle = ObjectTeleport:Toggle{
+	Name = "Toggle Safemode",
+	Description = "Stops autofarm when you take damage.",
+	Callback = function(State)
+		LastHealth = humanoid().Health
+		AutofarmSafemode = State
+	end
+}
+
+ObjectTeleport:SearchDropdown{
+	Name = "Objects",
+	Options = TurnInstanceArrayToStringArray(workspace.Map.Resources:GetChildren()),
+	ClearText = false, -- default
+	Callback = function(Value)
+		TeleportObjectsCurrentFolder = workspace.Map.Resources:FindFirstChild(Value)
+		FoundObjectToTeleportTo= nil
+	end
+}
+
+local Quit = QuitDivider:Button{
+	Name = "Close the script.",
+	Callback = function()
+		for _,v in ipairs(connections) do
+			if v then
+				v:Disconnect()
+			end
+		end
+		task.spawn(TurnOffPlayerESP)
+		IsFlying=false
+		game.SoundService:SetAttribute("Injected", false)
+		UI:Quit{
+			Message = "Chillflix Hub", -- closing message
+			Length = 1 -- seconds the closing message shows for
+		}
+	end
+}
+
+local function OnInputStart(input:InputObject, gpe)
+	if gpe then
+		return
+	end
+	if input.KeyCode == Enum.KeyCode.W then
+		Movements.Forward = true
+	elseif input.KeyCode == Enum.KeyCode.S then
+		Movements.Backward = true
+	elseif input.KeyCode == Enum.KeyCode.A then
+		Movements.Left = true
+	elseif input.KeyCode == Enum.KeyCode.D then
+		Movements.Right = true
+	elseif input.KeyCode == Enum.KeyCode.Space then
+		Jumping = true
+	elseif input.KeyCode == Enum.KeyCode.F1 then
+		IsWalkSpeed = not IsWalkSpeed
+	elseif input.KeyCode == Enum.KeyCode.F2 then
+		IsInfiniteJump = not IsInfiniteJump
+	end
+end
+
+local function OnInputEnd(input:InputObject, gpe)
+	if input.KeyCode == Enum.KeyCode.W then
+		Movements.Forward = false
+	elseif input.KeyCode == Enum.KeyCode.S then
+		Movements.Backward = false
+	elseif input.KeyCode == Enum.KeyCode.A then
+		Movements.Left = false
+	elseif input.KeyCode == Enum.KeyCode.D then
+		Movements.Right = false
+	elseif input.KeyCode == Enum.KeyCode.Space then
+		Jumping = false
+	end
+end
+
+local RSConnection
+
+RSConnection = RunService.RenderStepped:Connect(function(dt)
+	if IsWalkSpeed == true then
+		if Movements.Forward == true then
+			character():PivotTo(character():GetPivot()*CFrame.new(0,0,-1*(WalkSpeedAmount/50)))
+		end
+		if Movements.Backward == true then
+			character():PivotTo(character():GetPivot()*CFrame.new(0,0,1*(WalkSpeedAmount/50)))
+		end
+		if Movements.Left == true then
+			character():PivotTo(character():GetPivot()*CFrame.new(-1*(WalkSpeedAmount/50),0,0))
+		end
+		if Movements.Right == true then
+			character():PivotTo(character():GetPivot()*CFrame.new(1*(WalkSpeedAmount/50),0,0))
+		end
+	end
+	if IsInfiniteJump == true and Jumping == true then
+		if InfiniteJumpDebounce == false then
+			InfiniteJumpDebounce = true
+			if humanoid().Health > 0 then
+				character():PivotTo(character():GetPivot()*CFrame.new(Vector3.new(0,InfiniteJumpHeight,0)))
+				humanoid():ChangeState(Enum.HumanoidStateType.Jumping)
+			end
+			task.spawn(function()
+				task.wait(InfiniteJumpAmount/100)
+				InfiniteJumpDebounce = false
+			end)
+		end
+	end
+	LocalBlacklistParams.FilterDescendantsInstances = {character()}
+	if IsPlayerESP == true then
+		local LocalCFrame = character():GetPivot()
+		for _, CurrentPlayer in ipairs(game.Players:GetPlayers()) do
+			local PlayerCharacter = CurrentPlayer.Character
+			if PlayerCharacter and player ~= CurrentPlayer then
+				local PlayerCFrame = PlayerCharacter:GetPivot()
+				if PlayerCFrame then
+					local Distance = (LocalCFrame.Position-PlayerCFrame.Position).Magnitude
+					local CurrentEspHighlight = PlayerCharacter:FindFirstChild("ESPHighlight")
+					if Distance <= 100000 then
+						if not CurrentEspHighlight then
+							CurrentEspHighlight = Instance.new("Highlight")
+							CurrentEspHighlight.Name = "ESPHighlight"
+							CurrentEspHighlight.Parent = PlayerCharacter
+							CurrentEspHighlight.OutlineTransparency = 1
+						end
+						local PlayerHumanoid = PlayerCharacter:FindFirstChildWhichIsA("Humanoid")
+						if PlayerHumanoid then
+							if PlayerHumanoid.Health > 0 then
+								LocalBlacklistParams.FilterDescendantsInstances = ReturnAllCharactersExcept({PlayerCharacter,character()})
+								local Hit = Raycast(LocalCFrame.Position, PlayerCFrame.Position, Distance, LocalBlacklistParams)
+								if Hit:FindFirstAncestorWhichIsA("Model") == PlayerCharacter then
+									CurrentEspHighlight.FillColor = Color3.new(0.184314, 1, 0)
+								else
+									CurrentEspHighlight.FillColor = Color3.new(1, 0, 0.0156863)
+								end
+							else
+								CurrentEspHighlight.FillColor = Color3.new(1, 1, 0.203922)
+							end
+						end
+					else
+						if CurrentEspHighlight then
+							CurrentEspHighlight:Destroy()
+						end
+					end
+				end
+			end
+		end
+	else
+		task.spawn(TurnOffPlayerESP)
+	end
+	
+	
+	
+	
+	local OriginCFrame = character():GetPivot()
+	local OriginPosition = OriginCFrame.Position
+	if Autopickup or (TeleportObjectsCurrentFolder and LoopTeleportToObject) then
+		for _,v in ipairs(workspace.Important.Items:GetChildren()) do
+			local distance = (v:GetPivot().Position-OriginPosition).Magnitude
+			if distance <= 20 then
+				task.spawn(PickupItem, v)
+			end
+		end
+	end
+	if LoopTeleportToPlayer then
+		local target_character = TeleportPlayersCurrentPlayer.Character
+		if not target_character then
+			TeleportPlayersCurrentPlayer = nil
+			return
+		end
+		if target_character.Humanoid.Health <= 0  then
+			TeleportPlayersCurrentPlayer = nil
+			return
+		end
+		SpinAroundModel(target_character, dt, 3)
+	elseif TeleportObjectsCurrentFolder and LoopTeleportToObject then
+		if AutofarmSafemode then
+			if humanoid().Health < LastHealth then
+				LoopTeleportToObject = false
+				FoundObjectToTeleportTo = nil
+				LastTime = nil
+				character():PivotTo(OriginalCFrame)
+				return
+			end
+		end
+		if not FoundObjectToTeleportTo then--or humanoid().Health < LastHealth then
+			--[[warn(LastHealth, humanoid().Health)
+			LastHealth = humanoid().Health
+			local PreviousObjectHealth
+			if FoundObjectToTeleportTo then
+				PreviousObjectHealth = FoundObjectToTeleportTo.Health.Value
+				FoundObjectToTeleportTo.Health.Value = 1
+			end]]
+			FoundObjectToTeleportTo = ChooseRandomObject()
+			--[[if FoundObjectToTeleportTo then
+				FoundObjectToTeleportTo.Health.Value = PreviousObjectHealth
+			end]]
+			if not FoundObjectToTeleportTo then
+				character():PivotTo(OriginCFrame)
+				return
+			end
+		else
+			--[[local Health = FoundObjectToTeleportTo.Health
+			print(Health.Value)]]
+			if IsObjectDestroyed(FoundObjectToTeleportTo) then
+				if not LastTime then
+					LastTime = tick()
+					return
+				elseif LastTime ~= "Do" then
+					if tick()-LastTime >= 1 then
+						LastTime = "Do"
+					end
+					SpinAroundModel(FoundObjectToTeleportTo, dt, .1)
+					return
+				end
+				FoundObjectToTeleportTo = nil
+				LastTime = nil
+				return
+			end
+		end
+		SpinAroundModel(FoundObjectToTeleportTo, dt, .1)
+	end
+end)
+
+local UserInputBeganConnection = game:GetService('UserInputService').InputBegan:Connect(OnInputStart)
+local UserInputEndedConnection = game:GetService('UserInputService').InputEnded:Connect(OnInputEnd)
+
+table.insert(connections, RSConnection)
+table.insert(connections, UserInputBeganConnection)
+table.insert(connections, UserInputEndedConnection)
